@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,17 @@ Route::middleware('auth')->group(function () {
 
 
     //Route halaman
-    Route::get('/course', function () {return view('course');})->name('course');
+    Route::get('/course', [CourseController::class, 'index'])->name('course');
+    Route::get('/courses/create', [CourseController::class, 'create'])->name('courses.create');
+    Route::post('/courses', [CourseController::class, 'store'])->name('courses.store');
+
+    Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
+
+    Route::get('/courses/{id}/edit', [CourseController::class, 'edit'])->name('courses.edit');
+
+    Route::put('/courses/{id}', [CourseController::class, 'update'])->name('courses.update');
+
+
     Route::get('/unit', function () {return view('unit');})->name('unit');
     Route::get('/lessons', function () {return view('lessons');})->name('lessons');
     Route::get('/challange', function () {return view('challange');})->name('challange');

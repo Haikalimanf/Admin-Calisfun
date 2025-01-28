@@ -17,7 +17,7 @@
                         </x-nav-link>
                         <x-nav-link :href="route('course')" :active="request()->routeIs('course')">
                             {{ __('Course') }}
-                        </x-nav-link>
+                        </x-nav-link>                        
                         <x-nav-link :href="route('unit')" :active="request()->routeIs('unit')">
                             {{ __('Units') }}
                         </x-nav-link>
