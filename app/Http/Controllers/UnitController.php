@@ -90,20 +90,23 @@ class UnitController extends Controller
         return redirect()->route('unit')->with('success', 'Unit created successfully!');
     }
     
-    
-    
 
     public function search(Request $request)
     {
+        $request->validate([
+            'search' => 'nullable|string|max:255',
+        ]);
+    
         $search = $request->input('search');  // Mengambil input search dari request
-
+    
         if ($search) {
-            $units = Unit::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($search) . '%'])
-                         ->paginate(5);
+            $units = Unit::where('title', 'ilike', '%' . $search . '%')->paginate(5);
         } else {
             $units = Unit::paginate(5);  // Jika tidak ada pencarian, tampilkan semua unit
         }
-
+    
         return view('unit', compact('units'));
     }
-}
+    
+    
+}    
