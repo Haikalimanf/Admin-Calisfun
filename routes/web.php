@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\LessonController;
 
 
 /*
@@ -61,7 +62,31 @@ Route::middleware('auth')->group(function () {
     Route::delete('/units/{id}', [UnitController::class, 'destroy'])->name('units.destroy'); // Route untuk menghapus unit
     Route::get('/units/search', [UnitController::class, 'search'])->name('units.search'); // Route untuk pencarian unit
     
-    Route::get('/lessons', function () {return view('lessons');})->name('lessons');
+
+
+// Route untuk menampilkan daftar lessons
+Route::get('/lessons', [LessonController::class, 'index'])->name('lessons'); // Menampilkan daftar lessons
+
+
+// Route untuk form create lesson
+Route::get('/lessons/create', [LessonController::class, 'create'])->name('lessons.create'); // Form untuk membuat lesson baru
+
+// Route untuk menyimpan lesson baru
+Route::post('/lessons', [LessonController::class, 'store'])->name('lessons.store'); // Menyimpan lesson baru
+
+// Route untuk form edit lesson
+Route::get('/lessons/{id}/edit', [LessonController::class, 'edit'])->name('lessons.edit'); // Form untuk mengedit lesson
+
+// Route untuk update lesson
+Route::put('/lessons/{id}', [LessonController::class, 'update'])->name('lessons.update'); // Mengupdate lesson yang ada
+
+// Route untuk menghapus lesson
+Route::delete('/lessons/{id}', [LessonController::class, 'destroy'])->name('lessons.destroy'); // Menghapus lesson
+
+// Route untuk pencarian lessons
+Route::get('/lessons/search', [LessonController::class, 'search'])->name('lessons.search');
+
+
     Route::get('/challenge', function () {return view('challenge');})->name('challenge');
     Route::get('/challenge-options', function () {return view('challenge-options');})->name('challenge-options');
     Route::get('/user', function () {return view('user');})->name('user');
