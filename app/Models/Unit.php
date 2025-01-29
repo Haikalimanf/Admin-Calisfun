@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Unit extends Model
 {
     use HasFactory;
 
@@ -13,12 +13,16 @@ class Course extends Model
     protected $fillable = [
         'title',
         'description',
+        'course_id',
+        'order',
     ];
+    
 
-    // Relasi ke Unit
-    public function units()
+    // Relasi ke Course
+    public function course()
     {
-        return $this->hasMany(Unit::class, 'course_id');
+        return $this->belongsTo(Course::class, 'course_id');
     }
 }
+
 

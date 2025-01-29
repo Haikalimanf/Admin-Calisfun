@@ -37,7 +37,7 @@
                         </x-nav-link>                        
                         <x-nav-link :href="route('unit')" :active="request()->routeIs('unit')">
                             {{ __('Units') }}
-                        </x-nav-link>
+                        </x-nav-link>                        
                         <x-nav-link :href="route('lessons')" :active="request()->routeIs('lessons')">
                             {{ __('Lesson') }}
                         </x-nav-link>
