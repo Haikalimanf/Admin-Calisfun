@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ChallengeController;
+
 
 
 /*
@@ -64,30 +66,28 @@ Route::middleware('auth')->group(function () {
     
 
 
-// Route untuk menampilkan daftar lessons
+
 Route::get('/lessons', [LessonController::class, 'index'])->name('lessons'); // Menampilkan daftar lessons
-
-
-// Route untuk form create lesson
 Route::get('/lessons/create', [LessonController::class, 'create'])->name('lessons.create'); // Form untuk membuat lesson baru
-
-// Route untuk menyimpan lesson baru
 Route::post('/lessons', [LessonController::class, 'store'])->name('lessons.store'); // Menyimpan lesson baru
-
-// Route untuk form edit lesson
 Route::get('/lessons/{id}/edit', [LessonController::class, 'edit'])->name('lessons.edit'); // Form untuk mengedit lesson
-
-// Route untuk update lesson
 Route::put('/lessons/{id}', [LessonController::class, 'update'])->name('lessons.update'); // Mengupdate lesson yang ada
-
-// Route untuk menghapus lesson
 Route::delete('/lessons/{id}', [LessonController::class, 'destroy'])->name('lessons.destroy'); // Menghapus lesson
-
-// Route untuk pencarian lessons
 Route::get('/lessons/search', [LessonController::class, 'search'])->name('lessons.search');
 
 
-    Route::get('/challenge', function () {return view('challenge');})->name('challenge');
+
+Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges'); // Menampilkan daftar challenges
+Route::get('/challenges/create', [ChallengeController::class, 'create'])->name('challenges.create'); // Form untuk membuat challenge baru
+Route::post('/challenges', [ChallengeController::class, 'store'])->name('challenges.store'); // Menyimpan challenge baru
+Route::get('/challenges/{id}/edit', [ChallengeController::class, 'edit'])->name('challenges.edit'); // Form untuk mengedit challenge
+Route::put('/challenges/{id}', [ChallengeController::class, 'update'])->name('challenges.update'); // Mengupdate challenge yang ada
+Route::delete('/challenges/{id}', [ChallengeController::class, 'destroy'])->name('challenges.destroy'); // Menghapus challenge
+Route::get('/challenges/search', [ChallengeController::class, 'search'])->name('challenges.search'); // Mencari challenge
+
+
+
+
     Route::get('/challenge-options', function () {return view('challenge-options');})->name('challenge-options');
     Route::get('/user', function () {return view('user');})->name('user');
     Route::get('/edit-unit', function () {return view('editUnit');})->name('editUnit');
