@@ -1,3 +1,20 @@
+<Script>
+    function toggleDropdown(event) {
+    const dropdownMenu = event.currentTarget.nextElementSibling;
+    dropdownMenu.classList.toggle('hidden');
+    }
+
+    // Optional: Close dropdown if clicked outside
+    document.addEventListener('click', (event) => {
+        const dropdowns = document.querySelectorAll('#dropdownMenu');
+        dropdowns.forEach((dropdown) => {
+            if (!dropdown.contains(event.target) && !dropdown.previousElementSibling.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+    });
+</Script>
+
 <nav class="bg-white shadow-sm" x-data="{ isOpen: false }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
@@ -24,11 +41,11 @@
                         <x-nav-link :href="route('lessons')" :active="request()->routeIs('lessons')">
                             {{ __('Lesson') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('challange')" :active="request()->routeIs('challange')">
-                            {{ __('Challange') }}
+                        <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')">
+                            {{ __('challenge') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('challange-options')" :active="request()->routeIs('challange-options')">
-                            {{ __('Challange Options') }}
+                        <x-nav-link :href="route('challenge-options')" :active="request()->routeIs('challenge-options')">
+                            {{ __('challenge Options') }}
                         </x-nav-link>
                         <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
                             {{ __('Users') }}
@@ -102,11 +119,11 @@
             <x-responsive-nav-link :href="route('lessons')" :active="request()->routeIs('lessons')">
                 {{ __('Lesson') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('challange')" :active="request()->routeIs('challange')">
-                {{ __('Challange') }}
+            <x-responsive-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')">
+                {{ __('challenge') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('challange-options')" :active="request()->routeIs('challange-options')">
-                {{ __('Challange Options') }}
+            <x-responsive-nav-link :href="route('challenge-options')" :active="request()->routeIs('challenge-options')">
+                {{ __('challenge Options') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('user')" :active="request()->routeIs('user')">
                 {{ __('Users') }}
