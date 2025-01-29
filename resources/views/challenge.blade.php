@@ -5,8 +5,8 @@
 
                 <!-- Table responsive wrapper -->
                 <div class="p-6 overflow-x-auto bg-white">
-                <h1 class="text-3xl font-bold mb-3">Units Admin Page</h1>
-                <p class="mb-4 text-gray-600">Manage Units on Calisfun</p>
+                <h1 class="text-3xl font-bold mb-3">Challenge Page</h1>
+                <p class="mb-4 text-gray-600">Manage Challenge on Calisfun</p>
 
                 <!-- Search input -->
                 <div class="relative m-[2px] mb-3 mr-5 float-left">
@@ -38,7 +38,7 @@
                                 </a>
                             </th>
                             <th scope="col" class="px-6 py-4">
-                                Unit Name
+                                Type
                                 <a href="" class="inline">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@
                                 </a>
                             </th>
                             <th scope="col" class="px-6 py-4">
-                                Description
+                                Question
                                 <a href="" class="inline">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@
                                 </a>
                             </th>
                             <th scope="col" class="px-6 py-4">
-                                Level
+                                Lesson
                                 <a href="" class="inline">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -92,9 +92,9 @@
                     <tbody>
                         <tr class="border-b hover:bg-neutral-100">
                             <th scope="row" class="px-6 py-4">1</th>
-                            <td class="px-6 py-4">Unit 1</td>
-                            <td class="px-6 py-4">Deskripsi Unit 1</td>
-                            <td class="px-6 py-4">Mudah</td>
+                            <td class="px-6 py-4">SELECT</td>
+                            <td class="px-6 py-4">1 + 1 = ?</td>
+                            <td class="px-6 py-4">Lesson 1</td>
                             <td class="border-b px-4 py-2">
                                 <div class="relative">
                                     <!-- Button untuk membuka dropdown -->
@@ -140,9 +140,9 @@
                         </tr>
                         <tr class="border-b hover:bg-neutral-100">
                             <th scope="row" class="px-6 py-4">2</th>
-                            <td class="px-6 py-4">Unit 2</td>
-                            <td class="px-6 py-4">Deskripsi Unit 2</td>
-                            <td class="px-6 py-4">Sulit</td>
+                            <td class="px-6 py-4">HINT</td>
+                            <td class="px-6 py-4">Tolong isi huruf yang hilang dari Be_ua_g ? </td>
+                            <td class="px-6 py-4">Lesson 2</td>
                             <td class="border-b px-4 py-2">
                                 <div class="relative">
                                     <!-- Button untuk membuka dropdown -->
@@ -186,103 +186,6 @@
                             </td>
                             </td>
                         </tr>
-                        <tr class="border-b hover:bg-neutral-100">
-                            <th scope="row" class="px-6 py-4">3</th>
-                            <td class="px-6 py-4">Unit 3</td>
-                            <td class="px-6 py-4">Deskripsi Unit 3</td>
-                            <td class="px-6 py-4">Sedang</td>
-                            <td class="border-b px-4 py-2">
-                                <div class="relative">
-                                    <!-- Button untuk membuka dropdown -->
-                                    <button
-                                        class="text-gray-700 hover:text-gray-900 text-base flex items-center space-x-2 bg-gray-100 px-3 py-2 rounded-md focus:outline-none"
-                                        onclick="toggleDropdown(event)"
-                                    >
-                                        <span>Aksi</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 9l-7.5 7.5L4.5 9" />
-                                        </svg>
-                                    </button>
-
-                                    <!-- Dropdown menu -->
-                                    <div
-                                        class="absolute right-[-20px] top-0 mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
-                                        id="dropdownMenu"
-                                    >
-                                        <a
-                                            href="#"
-                                            class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-4.536a2.25 2.25 0 113.182 3.182L7.5 21H3v-4.5L16.732 3.732z" />
-                                            </svg>
-                                            <span>Edit</span>
-                                        </a>
-                                        <form>
-                                            <button
-                                                type="submit"
-                                                class="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-100 flex items-center space-x-2"
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                                <span>Delete</span>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                            </td>
-                        </tr>
-                        <tr class="border-b hover:bg-neutral-100">
-                            <th scope="row" class="px-6 py-4">4</th>
-                            <td class="px-6 py-4">Unit 4</td>
-                            <td class="px-6 py-4">Deskripsi Unit 4</td>
-                            <td class="px-6 py-4">Mudah</td>
-                            <td class="border-b px-4 py-2">
-                                <div class="relative">
-                                    <!-- Button untuk membuka dropdown -->
-                                    <button
-                                        class="text-gray-700 hover:text-gray-900 text-base flex items-center space-x-2 bg-gray-100 px-3 py-2 rounded-md focus:outline-none"
-                                        onclick="toggleDropdown(event)"
-                                    >
-                                        <span>Aksi</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 9l-7.5 7.5L4.5 9" />
-                                        </svg>
-                                    </button>
-
-                                    <!-- Dropdown menu -->
-                                    <div
-                                        class="absolute right-[-20px] top-0 mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
-                                        id="dropdownMenu"
-                                    >
-                                        <a
-                                            href="#"
-                                            class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-4.536a2.25 2.25 0 113.182 3.182L7.5 21H3v-4.5L16.732 3.732z" />
-                                            </svg>
-                                            <span>Edit</span>
-                                        </a>
-                                        <form>
-                                            <button
-                                                type="submit"
-                                                class="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-100 flex items-center space-x-2"
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                                <span>Delete</span>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                            </td>
-                        </tr>
-
                     </tbody>
 
                 </table>
@@ -319,7 +222,7 @@
             </div>
         <!-- Create Button -->
         <div class="mt-8 text-left">
-            <a href="{{ route('units.create') }}"class="bg-blue-600 text-white px-4 py-2 rounded">Create New Unit</a>
+            <a href="{{ route('units.create') }}"class="bg-blue-600 text-white px-4 py-2 rounded">Create New Challenge</a>
         </div>
         </div>
     </div>
