@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\UnitController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +35,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/course', [CourseController::class, 'index'])->name('course');
     Route::get('/courses/create', [CourseController::class, 'create'])->name('courses.create');
     Route::post('/courses', [CourseController::class, 'store'])->name('courses.store');
-    
-    
+
+
+    Route::get('/courses', [CourseController::class, 'index'])->name('course');
+    Route::get('/courses/search', [CourseController::class, 'search'])->name('courses.search');
+
     Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
     
     Route::get('/courses/{id}/edit', [CourseController::class, 'edit'])->name('courses.edit');
@@ -43,9 +48,19 @@ Route::middleware('auth')->group(function () {
     
     // Route halaman Unit
     Route::get('/units/create', [CourseController::class, 'unit'])->name('units.create');
+    
 
 
-    Route::get('/unit', function () {return view('unit');})->name('unit');
+
+    // Route untuk menampilkan unit
+    Route::get('/units', [UnitController::class, 'index'])->name('unit'); // Route untuk menampilkan daftar unit
+    Route::get('/units/create', [UnitController::class, 'create'])->name('units.create'); // Route untuk form create unit
+    Route::post('/units', [UnitController::class, 'store'])->name('units.store'); // Route untuk menyimpan unit baru
+    Route::get('/units/{id}/edit', [UnitController::class, 'edit'])->name('units.edit'); // Route untuk form edit unit
+    Route::put('/units/{id}', [UnitController::class, 'update'])->name('units.update'); // Route untuk update unit
+    Route::delete('/units/{id}', [UnitController::class, 'destroy'])->name('units.destroy'); // Route untuk menghapus unit
+    Route::get('/units/search', [UnitController::class, 'search'])->name('units.search'); // Route untuk pencarian unit
+    
     Route::get('/lessons', function () {return view('lessons');})->name('lessons');
     Route::get('/challenge', function () {return view('challenge');})->name('challenge');
     Route::get('/challenge-options', function () {return view('challenge-options');})->name('challenge-options');

@@ -77,6 +77,20 @@ public function store(Request $request)
     // Redirect ke halaman course dengan pesan sukses
     return redirect()->route('course')->with('success', 'Course created successfully!');
 }
+public function search(Request $request)
+{
+    $search = $request->input('search');  // Mengambil input search dari request
+
+    if ($search) {
+        $courses = Course::whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($search) . '%'])
+                         ->paginate(5);
+    } else {
+        $courses = Course::paginate(5);  // Jika tidak ada pencarian, tampilkan semua course
+    }
+
+    return view('course', compact('courses'));
+}
+
 
 
 }
