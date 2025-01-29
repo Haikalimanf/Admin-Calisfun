@@ -16,4 +16,9 @@ class Lesson extends Model
     {
         return $this->belongsTo(Unit::class, 'unit_id');
     }
+    public function Challenge()
+    {
+        return $this->hasMany(Challenge::class, 'lesson_id');
+    }
+    
 }

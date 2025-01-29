@@ -41,7 +41,7 @@
                         <x-nav-link :href="route('lessons')" :active="request()->routeIs('lessons')">
                             {{ __('Lesson') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')">
+                        <x-nav-link :href="route('challenges')" :active="request()->routeIs('challenges')">
                             {{ __('challenge') }}
                         </x-nav-link>
                         <x-nav-link :href="route('challenge-options')" :active="request()->routeIs('challenge-options')">
@@ -119,7 +119,7 @@
             <x-responsive-nav-link :href="route('lessons')" :active="request()->routeIs('lessons')">
                 {{ __('Lesson') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')">
+            <x-responsive-nav-link :href="route('challenges')" :active="request()->routeIs('challenges')">
                 {{ __('challenge') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('challenge-options')" :active="request()->routeIs('challenge-options')">
