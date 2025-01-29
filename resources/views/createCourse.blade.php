@@ -6,7 +6,7 @@
                 <p class="text-gray-500 mb-6">Create Course</p>
 
                 <!-- Form Create Course -->
-                <form action="{{ route('courses.store') }}" method="POST">
+                <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-4">
@@ -25,10 +25,10 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="image_src" class="block text-gray-700">Image Source (Path)</label>
-                        <input type="text" id="image_src" name="image_src" value="{{ old('image_src') }}" 
+                        <label for="image_src" class="block text-gray-700">Image Source</label>
+                        <input type="file" id="image_src" name="image_src" 
                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 px-3 py-2 text-sm"
-                        placeholder="/path/to/image.jpg" required>
+                        required>
                         @error('image_src') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
                     </div>
 
