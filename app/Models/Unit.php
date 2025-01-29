@@ -15,6 +15,7 @@ class Unit extends Model
         'description',
         'course_id',
         'order',
+
     ];
     
 
@@ -22,6 +23,11 @@ class Unit extends Model
     public function course()
     {
         return $this->belongsTo(Course::class, 'course_id');
+    }
+        // Relasi ke Lesson
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'unit_id');
     }
 }
 

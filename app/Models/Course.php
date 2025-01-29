@@ -20,5 +20,6 @@ class Course extends Model
     {
         return $this->hasMany(Unit::class, 'course_id');
     }
+
 }
 
