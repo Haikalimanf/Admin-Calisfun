@@ -10,9 +10,10 @@
 
                     <!-- Challenge Question -->
                     <div class="mb-4">
-                        <label for="challenge-question" class="block text-sm font-medium text-gray-700">Challenge Question</label>
+                        <label for="title" class="block text-sm font-medium text-gray-700">Challenge Question</label>
                         <input type="text" id="challenge-question" name="question" placeholder="Please input your Question..."
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 px-3 py-2 text-sm">
+                        value="{{ old('title') }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 px-3 py-2 text-sm" required>
+                        @error('question') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
                     </div>
 
                     <!-- Challenge Type -->
@@ -20,8 +21,8 @@
                         <label for="challenge-type" class="block text-sm font-medium text-gray-700">Type</label>
                         <select id="challenge-type" name="type"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 px-3 py-2 text-sm">
-                            <option value="hint">HINT</option>
-                            <option value="question">SELECT</option>
+                            <option value="HINT">HINT</option>
+                            <option value="SELECT">SELECT</option>
                         </select>
                     </div>
 
@@ -38,12 +39,12 @@
                         </select>
                     </div>
                     
-
-                    <!-- Image Upload -->
-                    <div class="mb-6">
-                        <label for="image_src" class="block text-sm font-medium text-gray-700">Image (optional)</label>
+                    <!-- Image Upload (Initially Hidden) -->
+                    <div class="mb-4" id="image-upload-section" style="display: none;">
+                        <label for="image_src" class="block text-gray-700">Image Source</label>
                         <input type="file" id="image_src" name="image_src" 
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 px-3 py-2 text-sm">
+                        @error('image_src') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
                     </div>
 
                     <!-- Create Button -->
@@ -56,4 +57,23 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('challenge-type').addEventListener('change', function() {
+        var type = this.value;
+        var imageUploadSection = document.getElementById('image-upload-section');
+        var imageInput = document.getElementById('image_src');
+
+        if (type === 'SELECT') {
+            imageUploadSection.style.display = 'none';
+            imageInput.removeAttribute('required'); // Hapus atribut required
+        } else {
+            imageUploadSection.style.display = 'block';
+            imageInput.setAttribute('required', 'required'); // Tambahkan atribut required
+        }
+    });
+
+    // Menjalankan event listener untuk memastikan tampilan sudah sesuai saat pertama kali load
+    document.getElementById('challenge-type').dispatchEvent(new Event('change'));
+    </script>
 </x-app-layout>
