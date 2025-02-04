@@ -13,27 +13,25 @@
                         </div>
                     @endif
 
-<!-- Search input -->
-<div class="relative m-[2px] mb-3 mr-5 float-left">
-    <label for="inputSearch" class="sr-only">Search </label>
-    <form action="{{ route('units.search') }}" method="GET">
-        <input 
-            id="inputSearch" 
-            name="search"
-            type="text" 
-            value="{{ request('search') }}" 
-            placeholder="Search..." 
-            class="block w-64 rounded-lg border py-2 pl-10 pr-4 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400" 
-        />
-        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 transform text-blue-600">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-        </button>
-    </form>
-</div>
-
-
+                    <!-- Search input -->
+                    <div class="relative m-[2px] mb-3 mr-5 float-left">
+                        <label for="inputSearch" class="sr-only">Search </label>
+                        <form action="{{ route('units.search') }}" method="GET">
+                            <input 
+                                id="inputSearch" 
+                                name="search"
+                                type="text" 
+                                value="{{ request('search') }}" 
+                                placeholder="Search..." 
+                                class="block w-64 rounded-lg border py-2 pl-10 pr-4 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400" 
+                            />
+                            <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 transform text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
 
                 <!-- Table -->
                 <table class="min-w-full text-left text-sm whitespace-nowrap">
@@ -112,8 +110,8 @@
                             <td class="px-6 py-4">{{ $unit->title }}</td>
                             <td class="px-6 py-4">{{ $unit->description }}</td>
                             <td>{{ $unit->course ? $unit->course->title : 'No Course' }}</td> <!-- Menampilkan title dari course -->
-                            <td class="border-b px-4 py-2">
-                                <div class="relative">
+                            <td class="border-b px-4 py-4">
+                                <div class="relative m-[-10px]">
                                     <!-- Button untuk membuka dropdown -->
                                     <button
                                         class="text-gray-700 hover:text-gray-900 text-base flex items-center space-x-2 bg-gray-100 px-3 py-2 rounded-md focus:outline-none"
@@ -127,7 +125,7 @@
 
                                     <!-- Dropdown menu -->
                                     <div
-                                        class="absolute right-0 top-0 mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
+                                        class="absolute right-0 top-[-9px] mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
                                         id="dropdownMenu"
                                     >
                                         <a
