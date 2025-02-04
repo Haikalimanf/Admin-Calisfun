@@ -22,12 +22,12 @@ class LoginRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string'],  // Bisa email atau username
             'password' => ['required', 'string'],
         ];
     }
@@ -41,11 +41,24 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        // Persiapkan kredensial untuk autentikasi
+        $credentials = ['password' => $this->password];
+
+        // Cek apakah input adalah email atau username
+        if (filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            // Jika input adalah email, autentikasi menggunakan email
+            $credentials['email'] = $this->email;
+        } else {
+            // Jika input adalah username, autentikasi menggunakan nama
+            $credentials['name'] = $this->email;
+        }
+
+        // Coba autentikasi dengan kredensial
+        if (! Auth::attempt($credentials, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => trans('auth.failed'),  // Pesan jika login gagal
             ]);
         }
 
@@ -80,6 +93,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->string('email')) . '|' . $this->ip());
     }
 }
