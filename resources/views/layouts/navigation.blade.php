@@ -47,9 +47,6 @@
                         <x-nav-link :href="route('challenge-options')" :active="request()->routeIs('challenge-options')">
                             {{ __('challenge Options') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
-                            {{ __('Users') }}
-                        </x-nav-link>
                     </div>
                 </div>
             </div>
@@ -124,9 +121,6 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('challenge-options')" :active="request()->routeIs('challenge-options')">
                 {{ __('challenge Options') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('user')" :active="request()->routeIs('user')">
-                {{ __('Users') }}
             </x-responsive-nav-link>
         </div>
         <!-- Settings Dropdown -->

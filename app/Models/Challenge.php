@@ -10,7 +10,7 @@ class Challenge extends Model
     protected $table = 'challenge';  // Tabel di database harus bernama 'challenge'
 
     protected $fillable = [
-        'type', 'question', 'order', 'lesson_id', 'image_src'
+        'id','type', 'question', 'order', 'lesson_id', 'image_src'
     ];
 
     // Relasi dengan model Lesson
