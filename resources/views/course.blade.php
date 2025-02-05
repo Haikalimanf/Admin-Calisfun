@@ -13,25 +13,25 @@
                         </div>
                     @endif
 
-<!-- Search input -->
-<div class="relative m-[2px] mb-3 mr-5 float-left">
-    <label for="inputSearch" class="sr-only">Search </label>
-    <form action="{{ route('courses.search') }}" method="GET">
-        <input 
-            id="inputSearch" 
-            name="search"
-            type="text" 
-            value="{{ request('search') }}" 
-            placeholder="Search..." 
-            class="block w-64 rounded-lg border py-2 pl-10 pr-4 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400" 
-        />
-        <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 transform text-blue-600">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-        </button>
-    </form>
-</div>
+                    <!-- Search input -->
+                    <div class="relative m-[2px] mb-3 mr-5 float-left">
+                        <label for="inputSearch" class="sr-only">Search </label>
+                        <form action="{{ route('courses.search') }}" method="GET">
+                            <input 
+                                id="inputSearch" 
+                                name="search"
+                                type="text" 
+                                value="{{ request('search') }}" 
+                                placeholder="Search..." 
+                                class="block w-64 rounded-lg border py-2 pl-10 pr-4 text-sm focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400" 
+                            />
+                            <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 transform text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
 
 
 
@@ -98,7 +98,7 @@
                             <th scope="row" class="px-6 py-4">{{ $course->id }}</th>
                             <td class="px-6 py-4">{{ $course->title }}</td>
                             <td class="px-6 py-4">
-                                <img src="{{ Storage::url($course->image_src) ?? asset('images/noimage.png') }}" alt="Image" class="w-10 h-10 object-cover rounded-full">
+                                <img src="{{ $course->image_src}}" alt="Image" class="w-10 h-10 object-cover rounded-full">
                             </td>
                             <td class="border-b px-4 py-2">
                                 <div class="relative">

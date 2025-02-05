@@ -25,6 +25,7 @@ class ChallengeController extends Controller
     // Menyimpan challenge baru
     public function store(Request $request)
     {
+        dd($request->all());
         // Validasi input
         $request->validate([
             'question' => 'required|string|max:255',
@@ -32,7 +33,8 @@ class ChallengeController extends Controller
             'lesson_id' => 'required|exists:lessons,id',
             'image_src' => $request->type == 'HINT' ? 'required|image|mimes:jpeg,png,jpg,gif|max:2048' : 'nullable', // Validasi gambar hanya untuk tipe HINT
         ]);
-    
+
+        
         // Ambil nilai order yang terbesar berdasarkan lesson_id
         $maxOrder = Challenge::where('lesson_id', $request->lesson_id)->max('order');
     
@@ -63,9 +65,6 @@ class ChallengeController extends Controller
     
         return redirect()->route('challenges')->with('success', 'Challenge created successfully!');
     }
-    
-
-    
 
 
     // Menampilkan form untuk mengedit challenge

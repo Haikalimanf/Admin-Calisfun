@@ -12,8 +12,12 @@ class ChallengeOption extends Model
     // Tentukan nama tabel jika tidak sesuai konvensi
     protected $table = 'challenges_options';
 
+    public $timestamps = false;
+
     protected $fillable = [
-        'img_src',
+        'id',
+        'image_src',
+        'audio_src',
         'challenge_id',
         'text',
         'correct',
