@@ -95,56 +95,55 @@
                     <!-- table body -->
                     <tbody>
                     @foreach($lessons as $lesson)
-                        <tr class="border-b hover:bg-neutral-100">
-                            <th scope="row" class="px-6 py-4">{{ $lesson->id }}</th>
-                            <td class="px-6 py-4">{{ $lesson->title }}</td>
-                            <td>{{$lesson->unit ? $lesson->unit->title : 'No Unit Assigned'  }}</td> <!-- Menampilkan title dari course -->
-                            <td class="border-b px-4 py-2">
-                                <div class="relative">
-                                    <!-- Button untuk membuka dropdown -->
-                                    <button
-                                        class="text-gray-700 hover:text-gray-900 text-base flex items-center space-x-2 bg-gray-100 px-3 py-2 rounded-md focus:outline-none"
-                                        onclick="toggleDropdown(event)"
+                    <tr class="border-b hover:bg-neutral-100">
+                        <th scope="row" class="px-5 py-5">{{ $lesson->id }}</th> <!-- Mengurangi padding -->
+                        <td class="px-4 py-5">{{ $lesson->title }}</td> <!-- Mengurangi padding -->
+                        <td class="px-5 py-3">{{ $lesson->unit ? $lesson->unit->title : 'No Unit Assigned' }}</td> <!-- Mengurangi padding -->
+                        <td class="border-b px-4 py-4"> <!-- Mengurangi padding -->
+                            <div class="relative">
+                                <!-- Button untuk membuka dropdown -->
+                                <button
+                                    class="text-gray-700 hover:text-gray-900 text-base flex items-center space-x-2 bg-gray-100 px-3 py-2 rounded-md focus:outline-none"
+                                    onclick="toggleDropdown(event)"
+                                >
+                                    <span>Aksi</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 9l-7.5 7.5L4.5 9" />
+                                    </svg>
+                                </button>
+
+                                <!-- Dropdown menu -->
+                                <div
+                                    class="absolute right-14 top-0 w-32 bg-white border rounded-md shadow-lg hidden"
+                                    id="dropdownMenu"
+                                >
+                                    <a
+                                        href="{{ route('lessons.edit', $lesson->id) }}"
+                                        class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
                                     >
-                                        <span>Aksi</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 9l-7.5 7.5L4.5 9" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-4.536a2.25 2.25 0 113.182 3.182L7.5 21H3v-4.5L16.732 3.732z" />
                                         </svg>
-                                    </button>
-
-                                    <!-- Dropdown menu -->
-                                    <div
-                                        class="absolute right-0 top-0 mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
-                                        id="dropdownMenu"
-                                    >
-                                        <a
-                                            href="{{ route('lessons.edit', $lesson->id) }}"
-
-                                            class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center space-x-2"
+                                        <span>Edit</span>
+                                    </a>
+                                    <form action="{{ route('lessons.destroy', $lesson->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this course?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                            type="submit"
+                                            class="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-100 flex items-center space-x-2"
                                         >
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-4.536a2.25 2.25 0 113.182 3.182L7.5 21H3v-4.5L16.732 3.732z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                             </svg>
-                                            <span>Edit</span>
-                                        </href=>
-                                        <form action="{{ route('lessons.destroy', $lesson->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this course?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button
-                                                type="submit"
-                                                class="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-100 flex items-center space-x-2"
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                                <span>Delete</span>
-                                            </button>
-                                        </form>
-                                        
-                                    </div>
+                                            <span>Delete</span>
+                                        </button>
+                                    </form>
                                 </div>
-                            </td>
-                        </tr>
+                            </div>
+                        </td>
+                    </tr>
+
                     @endforeach
                 </tbody>
 

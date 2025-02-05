@@ -100,7 +100,7 @@
                             <td class="px-6 py-4">
                                 <img src="{{ $course->image_src}}" alt="Image" class="w-10 h-10 object-cover rounded-full">
                             </td>
-                            <td class="border-b px-4 py-2">
+                            <td class="border-b px-4 py-4">
                                 <div class="relative">
                                     <!-- Button untuk membuka dropdown -->
                                     <button
@@ -115,7 +115,7 @@
 
                                     <!-- Dropdown menu -->
                                     <div
-                                        class="absolute right-0 top-0 mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
+                                        class="absolute right-0 top-[-9px] mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
                                         id="dropdownMenu"
                                     >
                                         <a
