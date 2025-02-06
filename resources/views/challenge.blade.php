@@ -112,8 +112,8 @@
                             <td class="px-6 py-4">{{ $challenge->type }}</td>
                             <td class="px-6 py-4">{{ $challenge->question }}</td>
                             <td>{{ $challenge->lesson ? $challenge->lesson->title : 'No Course' }}</td> <!-- Menampilkan title dari course -->
-                            <td class="border-b px-4 py-2">
-                                <div class="relative">
+                            <td class="border-b px-4 py-6">
+                                <div class="relative m-[-13px]">
                                     <!-- Button untuk membuka dropdown -->
                                     <button
                                         class="text-gray-700 hover:text-gray-900 text-base flex items-center space-x-2 bg-gray-100 px-3 py-2 rounded-md focus:outline-none"
@@ -127,7 +127,7 @@
 
                                     <!-- Dropdown menu -->
                                     <div
-                                        class="absolute right-0 top-0 mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
+                                        class="absolute right-0 top-[-9px] mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
                                         id="dropdownMenu"
                                     >
                                         <a

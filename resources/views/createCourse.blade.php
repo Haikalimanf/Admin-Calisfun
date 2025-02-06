@@ -25,10 +25,15 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="image_src" class="block text-gray-700">Image Source</label>
-                        <input type="file" id="image_src" name="image_src" 
-                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-300 px-3 py-2 text-sm"
-                        required>
+                        <label for="image_src" class="block text-sm font-medium text-gray-700">Image Source</label>
+                            <input type="file" id="image_src" name="image_src" class="hidden" accept="image/jpeg, image/png, image/jpg, image/svg+xml" required onchange="updateFileName()">
+                            <div class="flex items-center space-x-4">
+                                <label for="image_src" class="flex items-center cursor-pointer bg-gray-100 border-2 border-gray-300 rounded-md py-2 px-4 hover:bg-gray-200 transition duration-200">
+                                    <i class="fas fa-image text-gray-600 mr-2"></i>
+                                    <span class="text-sm text-gray-600">Choose Image</span>
+                                </label>
+                                <span id="file-name" class="text-sm text-gray-600">No file chosen</span>
+                            </div>
                         @error('image_src') <p class="text-red-500 text-xs">{{ $message }}</p> @enderror
                     </div>
 

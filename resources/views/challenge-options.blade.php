@@ -113,7 +113,7 @@
 
                                     <!-- Dropdown menu -->
                                     <div
-                                        class="absolute right-0 top-0 mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
+                                        class="absolute right-20 top-[-9px] mt-2 w-32 bg-white border rounded-md shadow-lg hidden"
                                         id="dropdownMenu"
                                     >
                                         <a
