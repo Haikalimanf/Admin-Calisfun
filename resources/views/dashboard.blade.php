@@ -7,7 +7,7 @@
         <h1 class="text-3xl font-bold text-gray-700 mb-7">Admin Dashboard</h1>
 
         <!-- Statistik Cards -->
-        <div class="grid grid-cols-4 gap-6">
+        <div class="grid grid-cols-3 gap-6 mb-10">
             <div class="bg-blue-500 text-white p-6 rounded-lg shadow-md">
                 <h2 class="text-lg font-semibold">Total Courses</h2>
                 <p class="text-3xl font-bold mt-2">120</p>
@@ -20,67 +20,78 @@
                 <h2 class="text-lg font-semibold">Challenges Created</h2>
                 <p class="text-3xl font-bold mt-2">80</p>
             </div>
-            <div class="bg-purple-500 text-white p-6 rounded-lg shadow-md">
-                <h2 class="text-lg font-semibold">Total Revenue</h2>
-                <p class="text-3xl font-bold mt-2">$12,500</p>
-            </div>
         </div>
 
-        <!-- Grafik Placeholder -->
+        <!-- Grafik User Growth -->
         <div class="bg-white p-6 rounded-lg shadow-md mt-10">
             <h2 class="text-xl font-semibold mb-4">User Growth</h2>
-            <div class="h-48 bg-gray-200 flex items-center justify-center rounded-lg">
-                <span class="text-gray-500">[ Grafik Placeholder ]</span>
+            <canvas id="userGrowthChart" class="w-full h-48"></canvas>
+        </div>
+
+        <!-- Recent Statistics -->
+        <div class="bg-white p-6 rounded-lg shadow-md mt-10">
+            <h2 class="text-xl font-semibold mb-4">Recent Statistics</h2>
+            <div class="space-y-4">
+                <!-- New Courses Added -->
+                <div class="flex justify-between">
+                    <p class="text-gray-700">New Courses Added</p>
+                    <p class="text-gray-600">8</p>
+                </div>
+                <!-- New Users Registered -->
+                <div class="flex justify-between">
+                    <p class="text-gray-700">New Users Registered</p>
+                    <p class="text-gray-600">25</p>
+                </div>
+                <!-- Completed Challenges -->
+                <div class="flex justify-between">
+                    <p class="text-gray-700">Challenges Completed</p>
+                    <p class="text-gray-600">15</p>
+                </div>
             </div>
         </div>
 
-        <!-- Recent Activity -->
+        <!-- Site Performance Summary -->
         <div class="bg-white p-6 rounded-lg shadow-md mt-10">
-            <h2 class="text-xl font-semibold mb-4">Recent Activity</h2>
-            <ul class="space-y-3">
-                <li class="flex items-center space-x-4">
-                    <span class="w-3 h-3 bg-blue-500 rounded-full"></span>
-                    <p class="text-gray-700"><strong>Admin</strong> added a new course <span class="text-blue-500">"Web Development 101"</span></p>
-                    <span class="text-sm text-gray-500">2 hours ago</span>
-                </li>
-                <li class="flex items-center space-x-4">
-                    <span class="w-3 h-3 bg-green-500 rounded-full"></span>
-                    <p class="text-gray-700"><strong>Jane Doe</strong> registered as a new user</p>
-                    <span class="text-sm text-gray-500">5 hours ago</span>
-                </li>
-                <li class="flex items-center space-x-4">
-                    <span class="w-3 h-3 bg-red-500 rounded-full"></span>
-                    <p class="text-gray-700"><strong>John Smith</strong> completed the challenge <span class="text-red-500">"JS Quiz"</span></p>
-                    <span class="text-sm text-gray-500">1 day ago</span>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Task Summary -->
-        <div class="bg-white p-6 rounded-lg shadow-md mt-10">
-            <h2 class="text-xl font-semibold mb-4">Task Summary</h2>
+            <h2 class="text-xl font-semibold mb-4">Site Performance</h2>
             <div class="space-y-4">
-                <div>
-                    <p class="text-gray-700">Update Course Materials</p>
-                    <div class="w-full bg-gray-200 h-3 rounded-full mt-2">
-                        <div class="bg-blue-500 h-3 rounded-full" style="width: 60%"></div>
-                    </div>
+                <!-- Active Users -->
+                <div class="flex justify-between">
+                    <p class="text-gray-700">Active Users (Today)</p>
+                    <p class="text-gray-600">200</p>
                 </div>
-                <div>
-                    <p class="text-gray-700">Review New User Registrations</p>
-                    <div class="w-full bg-gray-200 h-3 rounded-full mt-2">
-                        <div class="bg-green-500 h-3 rounded-full" style="width: 40%"></div>
-                    </div>
+                <!-- Site Uptime -->
+                <div class="flex justify-between">
+                    <p class="text-gray-700">Site Uptime</p>
+                    <p class="text-gray-600">99.9%</p>
                 </div>
-                <div>
-                    <p class="text-gray-700">Create New Challenges</p>
-                    <div class="w-full bg-gray-200 h-3 rounded-full mt-2">
-                        <div class="bg-red-500 h-3 rounded-full" style="width: 80%"></div>
-                    </div>
+                <!-- Issues Reported -->
+                <div class="flex justify-between">
+                    <p class="text-gray-700">Issues Reported</p>
+                    <p class="text-gray-600">2</p>
                 </div>
             </div>
         </div>
 
     </div>
+
+    <!-- Scripts for Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // User Growth Chart
+        var ctx = document.getElementById('userGrowthChart').getContext('2d');
+        var userGrowthChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'User Growth',
+                    data: [50, 100, 150, 200, 250, 300, 350],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            }
+        });
+    </script>
 
 </x-app-layout>
