@@ -32,7 +32,7 @@
 
         /* Background Color */
         body {
-            background-color: #f0f4f8;
+            background: linear-gradient(to right, #4c9aff, #5a8fe6); /* Biru gradien */
         }
 
         /* Animated Button */
@@ -60,6 +60,17 @@
             z-index: 20;
         }
 
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body class="font-custom">
@@ -78,14 +89,14 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-blue-600 to-blue-700 relative">
+    <section class="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-blue-600 to-blue-700 relative parallax" style="background-image: url('https://via.placeholder.com/1500x1000');">
         <div class="absolute inset-0 bg-black opacity-40"></div>
         <div class="relative z-10 text-center p-6 hero-text">
             <h1 class="text-6xl font-extrabold text-white mb-6 leading-tight">Membantu Anak Belajar<br>Dengan Cara Menyenangkan!</h1>
             <p class="text-xl text-white mb-6">
                 Calisfun adalah platform edukasi interaktif yang membuat belajar menjadi hal yang menyenangkan.
             </p>
-            <a href="#features" class="bg-yellow-600 text-white py-3 px-8 rounded-full text-lg font-semibold hover-btn transition duration-300 ease-in-out sticky-btn">
+            <a href="#features" class="bg-yellow-600 text-white py-3 px-8 rounded-full text-lg font-semibold hover:bg-yellow-500 hover:scale-105 transition-all duration-300 ease-in-out sticky-btn">
                 Jelajahi Fitur Kami
             </a>
         </div>

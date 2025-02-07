@@ -46,7 +46,15 @@
                     <div class="mb-6">
                         <label for="image" class="block text-sm font-medium text-gray-700">Image Src</label>
                         <label class="flex items-center w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 cursor-pointer hover:border-gray-400 transition">
-                            <input id="image_src" name="image_src" type="file">
+                            <!-- Icon for Image -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-images mr-2">
+                                <path d="M18 22H4a2 2 0 0 1-2-2V6"/>
+                                <path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/>
+                                <circle cx="12" cy="8" r="2"/>
+                                <rect width="16" height="16" x="6" y="2" rx="2"/>
+                            </svg>
+                            <span class="text-gray-600" id="image_name">Choose an image</span>
+                            <input id="image_src" name="image_src" type="file" class="sr-only" onchange="updateFileName('image_src', 'image_name')">
                         </label>
                     </div>
 
@@ -54,9 +62,27 @@
                     <div class="mb-6">
                         <label for="sound" class="block text-sm font-medium text-gray-700">Sound Src</label>
                         <label class="flex items-center w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-100 cursor-pointer hover:border-gray-400 transition">
-                            <input id="audio_src" name="audio_src" type="file">
+                            <!-- Icon for Audio -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-audio-lines mr-2">
+                                <path d="M2 10v3"/>
+                                <path d="M6 6v11"/>
+                                <path d="M10 3v18"/>
+                                <path d="M14 8v7"/>
+                                <path d="M18 5v13"/>
+                                <path d="M22 10v3"/>
+                            </svg>
+                            <span class="text-gray-600" id="audio_name">Choose a sound</span>
+                            <input id="audio_src" name="audio_src" type="file" class="sr-only" onchange="updateFileName('audio_src', 'audio_name')">
                         </label>
                     </div>
+
+                    <script>
+                        function updateFileName(inputId, textId) {
+                            const fileInput = document.getElementById(inputId);
+                            const fileName = fileInput.files[0] ? fileInput.files[0].name : "No file chosen";
+                            document.getElementById(textId).textContent = fileName;
+                        }
+                    </script>
 
                     <!-- Create Button -->
                     <button type="submit" 
