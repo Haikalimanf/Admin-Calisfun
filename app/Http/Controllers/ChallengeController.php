@@ -25,7 +25,6 @@ class ChallengeController extends Controller
     // Menyimpan challenge baru
     public function store(Request $request)
     {
-        dd($request->all());
         // Validasi input
         $request->validate([
             'question' => 'required|string|max:255',
