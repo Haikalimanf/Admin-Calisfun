@@ -41,7 +41,7 @@
                     </div>
 
                     <!-- Image Upload (Initially Hidden) -->
-                    <div id="image-upload-section" class="mb-4" style="display: {{ $challenge->type == 'HINT' ? 'block' : 'none' }};">
+                    <div id="image-upload-section" class="mb-4">
                         <label for="image_src" class="block text-sm font-medium text-gray-700">Image Source</label>
                         <input type="file" id="image_src" name="image_src" class="hidden" accept="image/jpeg, image/png, image/jpg, image/svg+xml" onchange="updateFileName()">
                         <div class="flex items-center justify-between space-x-4">
