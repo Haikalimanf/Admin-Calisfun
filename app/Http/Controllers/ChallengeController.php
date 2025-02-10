@@ -118,7 +118,7 @@ class ChallengeController extends Controller
         $challenge = Challenge::findOrFail($id);
         $challenge->delete();
 
-        return redirect()->route('challenge.index')->with('success', 'Challenge deleted successfully');
+        return redirect()->route('challenges')->with('success', 'Challenge deleted successfully');
     }
 
     // Pencarian challenge berdasarkan query
@@ -136,6 +136,6 @@ class ChallengeController extends Controller
             $challenges = Challenge::paginate(5);  // Jika tidak ada pencarian, tampilkan semua challenge
         }
 
-        return view('challenges.index', compact('challenges'));
+        return view('challenges', compact('challenges'));
     }
 }

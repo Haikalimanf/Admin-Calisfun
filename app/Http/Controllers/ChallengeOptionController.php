@@ -83,7 +83,7 @@ class ChallengeOptionController extends Controller
         $challengeOption = ChallengeOption::findOrFail($id);
         $challengeOption->delete();
 
-        return redirect()->route('challenge-options.index')->with('success', 'Challenge Option deleted successfully.');
+        return redirect()->route('challenge-options')->with('success', 'Challenge Option deleted successfully.');
     }
 
     public function create()
@@ -130,6 +130,6 @@ class ChallengeOptionController extends Controller
             'audio_src' => $audioUrl ?? null, // If audio was uploaded
         ]);
 
-        return redirect()->route('challenge-options.index')->with('success', 'Challenge Option created successfully.');
+        return redirect()->route('challenge-options')->with('success', 'Challenge Option created successfully.');
     }
 }
