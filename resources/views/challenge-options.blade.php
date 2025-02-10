@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 overflow-x-auto bg-white">
-                    <h1 class="text-3xl font-bold mb-3">Course Admin Page</h1>
+                    <h1 class="text-3xl font-bold mb-3">Challenge Option Page</h1>
                     <p class="mb-4 text-gray-600">Manage Challenge Options on Calisfun</p>
 
                     <!-- Display Success Message -->
@@ -178,7 +178,7 @@
         </div>
         <!-- Create Button -->
         <div class="mt-8 text-left">
-            <a href="{{ route('challenge-options.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded">Create New Course</a>
+            <a href="{{ route('challenge-options.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded">Create New Challange Option</a>
         </div>
         </div>
     </div>

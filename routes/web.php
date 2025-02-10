@@ -91,7 +91,7 @@ Route::get('/challenge-options', [ChallengeOptionController::class, 'index'])->n
 Route::get('/challenge-options/create', [ChallengeOptionController::class, 'create'])->name('challenge-options.create'); // Form untuk membuat challenge option baru
 Route::post('/challenge-options', [ChallengeOptionController::class, 'store'])->name('challenge-options.store'); // Menyimpan challenge option baru
 Route::get('/challenge-options/{id}/edit', [ChallengeOptionController::class, 'edit'])->name('challenge-options.edit'); // Form untuk mengedit challenge option
-Route::post('/challenge-options/{id}', [ChallengeOptionController::class, 'update'])->name('challenge-options.update'); // Mengupdate challenge option yang ada
+Route::put('/challenge-options/{id}', [ChallengeOptionController::class, 'update'])->name('challenge-options.update'); // Mengupdate challenge option yang ada
 Route::delete('/challenge-options/{id}', [ChallengeOptionController::class, 'destroy'])->name('challenge-options.destroy'); // Menghapus challenge option
 Route::get('/challenge-options/search', [ChallengeOptionController::class, 'search'])->name('challenge-options.search'); // Mencari challenge option
 

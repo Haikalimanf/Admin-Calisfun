@@ -76,32 +76,41 @@ class ChallengeController extends Controller
 
     // Mengupdate challenge
     public function update(Request $request, $id)
-    {
-        // Validasi input
-        $request->validate([
-            'question' => 'required|string|max:255',  // Ganti 'title' menjadi 'question'
-            'type' => 'required|string',  // Pastikan 'type' ada di form
-            'lesson_id' => 'required|exists:lessons,id',  // Relasi lesson_id
-            'image_src' => 'nullable|image',  // Menambahkan validasi untuk image
-        ]);
+{
 
-        $challenge = Challenge::findOrFail($id);
-        $challenge->question = $request->question;
-        $challenge->type = $request->type;
-        $challenge->lesson_id = $request->lesson_id;
+    $request->validate([
+        'question' => 'required|string|max:255',
+        'type' => 'required|string',
+        'lesson_id' => 'required|exists:lessons,id',
+        'image_src' => $request->type == 'HINT' ? 'required|image|mimes:jpeg,png,jpg,gif|max:2048' : 'nullable',
+    ]);
 
-        // Cek apakah ada file gambar dan upload ke Cloudinary
-        if ($request->hasFile('image_src')) {
-            $uploadedFileUrl = cloudinary()->upload($request->file('image_src')->getRealPath())->getSecurePath();
-            $challenge->image_src = $uploadedFileUrl;  // Menyimpan URL gambar baru dari Cloudinary
+
+    $challenge = Challenge::findOrFail($id);
+    $challenge->question = $request->question;
+    $challenge->type = $request->type;
+    $challenge->lesson_id = $request->lesson_id;
+
+    // Jika ada file gambar yang diupload, hapus gambar lama dan upload gambar baru
+    if ($request->hasFile('image_src')) {
+        // Hapus gambar lama jika ada
+        if ($challenge->image_src) {
+            $imageName = basename($challenge->image_src); // Ambil nama file dari URL
+            cloudinary()->destroy($imageName); // Hapus gambar lama dari Cloudinary
         }
 
-        // Menyimpan perubahan challenge ke database
-        $challenge->save();
-
-        // Redirect setelah update
-        return redirect()->route('challenge.index')->with('success', 'Challenge updated successfully');
+        // Upload gambar baru
+        $uploadedFileUrl = cloudinary()->upload($request->file('image_src')->getRealPath())->getSecurePath();
+        $challenge->image_src = $uploadedFileUrl;  // Menyimpan URL gambar baru dari Cloudinary
     }
+
+    // Simpan perubahan data challenge
+    $challenge->save();
+
+    // Redirect setelah update
+    return redirect()->route('challenges')->with('success', 'Challenge updated successfully');
+}
+
 
     // Menghapus challenge
     public function destroy($id)

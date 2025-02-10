@@ -26,21 +26,32 @@ class CourseController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'image_src' => 'nullable|string|regex:/^(\/[a-zA-Z0-9_\-\/]+(\.svg|\.jpg|\.jpeg|\.png|\.gif))$/',
-        ]);
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'image_src' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048', // 'sometimes' berarti validasi hanya dilakukan jika field ada
+    ]);
 
-        $course = Course::findOrFail($id);
-        $course->title = $request->title;
-        $course->description = $request->description;
-        $course->image_src = $request->image_src;
-        $course->save();
+    $course = Course::findOrFail($id);
 
-        return redirect()->route('course')->with('success', 'Course updated successfully!');
+    // Jika ada file gambar yang diupload
+    if ($request->hasFile('image_src')) {
+        // Upload file ke Cloudinary
+        $uploadedFileUrl = cloudinary()->upload($request->file('image_src')->getRealPath())->getSecurePath();
+        $resultFileUrls = (string) $uploadedFileUrl;
+
+        // Update gambar
+        $course->image_src = $resultFileUrls;
     }
+
+    // Update data lainnya
+    $course->title = $request->title;
+    $course->description = $request->description;
+    $course->save();
+
+    return redirect()->route('course')->with('success', 'Course updated successfully!');
+}
 
     public function create()
     {

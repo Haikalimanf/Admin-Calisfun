@@ -7,6 +7,7 @@
 
                 <form action="{{ route('challenge-options.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    
 
                     <!-- Unit Title -->
                     <div class="mb-4">
