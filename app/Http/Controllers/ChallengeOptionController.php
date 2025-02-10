@@ -132,4 +132,22 @@ class ChallengeOptionController extends Controller
 
         return redirect()->route('challenge-options')->with('success', 'Challenge Option created successfully.');
     }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'search' => 'nullable|string|max:255',
+        ]);
+
+        $search = $request->input('search');  // Mengambil input search dari request
+
+        if ($search) {
+            $challengeOptions = ChallengeOption::where('text', 'ilike', '%' . $search . '%')->paginate(5);
+        } else {
+            $challengeOptions = ChallengeOption::paginate(5);  // Jika tidak ada pencarian, tampilkan semua challenge
+        }
+
+        return view('challenge-options', compact('challengeOptions'));
+    }
+
 }

@@ -136,6 +136,6 @@ class ChallengeController extends Controller
             $challenges = Challenge::paginate(5);  // Jika tidak ada pencarian, tampilkan semua challenge
         }
 
-        return view('challenges', compact('challenges'));
+        return view('challenge', compact('challenges'));
     }
 }
